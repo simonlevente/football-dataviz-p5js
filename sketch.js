@@ -128,16 +128,24 @@ function draw()
 	textSize(22);
 	text('Legend', 8*120 + 50 + 25,420 + 30)
 	textSize(16);
-	text('1. use the slider', 8*120 + 50 + 25,480 + 30)
-	text('   checking passes', 8*120 + 50 + 25,500 + 30)
-	text('2. click on the', 8*120 + 50 + 25,520 + 30)
-	text('   players for details', 8*120 + 50 + 25,540 + 30)
+	text('1. use the slider', 8*120 + 50 + 25,460 + 30)
+	text('   checking passes', 8*120 + 50 + 25,480 + 30)
+	text('2. click on the', 8*120 + 50 + 25,500 + 30)
+	text('   players for details', 8*120 + 50 + 25,520 + 30)
 
 	if (nodes.length > 0) {
 		for (var i = 0; i < nodes.length; i++) {
 			var node = nodes[i];
 			if(node.active)
 			{
+				if(node.team === "Barcelona")
+				{
+					fill(255,0,0)
+				}
+				else
+				{
+					fill(0,0,255)
+				}
 				textSize(22);
 				text('Player details:', 8*120 + 50 + 25,220 + 30)
 				text(node.name, 8*120 + 50 + 25,220 + 60)
@@ -221,8 +229,17 @@ function draw()
 		for (var i = 0; i < nodes.length; i++) {
 			var node = nodes[i];
 		    fill(node.color); // Use 'blueValue' in new fill
-		    stroke(0, 0, 0);
-			ellipse(node.x, node.y, radius, radius);
+
+			stroke(0, 0, 0);
+			if(node.active)
+			{
+				ellipse(node.x, node.y, radius*1.8, radius*1.8);
+			}
+			else
+			{
+				ellipse(node.x, node.y, radius, radius);
+
+			}
 		}
 	}
 
